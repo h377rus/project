@@ -71,3 +71,15 @@ footer p {
 .cont {
     padding-left: 15px;
 }
+
+select {
+    border-radius: 10px;
+    border: solid darkblue;
+    padding: 10px;
+    color: blue;
+}
+
+select option {
+    color: gray;
+    padding: 20px;
+}
