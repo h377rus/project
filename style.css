@@ -1,85 +1,654 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Momo+Signature&family=Lato:wght@300;400;500;700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: sans-serif;
+    font-family: 'Lato', sans-serif;
+    background: linear-gradient(#3780ED, #614BA6);
+    color: white;
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
 }
 
-nav { 
-    margin:20px; 
-    padding:10px; 
-    border:2px solid lightgrey; 
-    border-radius:10px;
+
+/* Стили для шрифтов */
+
+.changa-one-regular {
+    font-family: "Changa One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
-nav a{ 
-    margin: 0px; 
-    padding: 5px; 
-    font-size: 20px; 
-    color: white; 
-    border: 3px solid navy; 
-    border-radius:12px; 
-    background-color: navy;
-    text-decoration-line: none;
+.momo-signature {
+    font-family: "Momo Signature", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 
-.price {
-    background-color: white;
-    color: darkblue;
+
+/* Базовые стили navbar */
+
+.navbar {
+    width: 100%;
+    background: rgba(55, 128, 237, 0.9);
+    padding: 15px 5%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    height: 70px;
+    overflow: hidden;
 }
 
-header {
-    background-color: lightblue ;
-    padding: 10px;
-    border-radius: 3px;
+.navbar:hover {
+    height: 85px;
+    padding: 20px 5% 25px;
+    background: rgba(55, 128, 237, 0.95);
 }
 
-header a {
-    text-decoration:none;
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-header img{
-    border-radius: 2px;
+.navbar:hover .nav-container {
+    transform: translateY(3px);
 }
 
-header b {
-    color : blue;
-    -webkit-text-stroke: 1px black;
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
 }
 
-header a{
-    background-color: white;
-    border-radius: 5px;
-    padding: 6px;
-    margin: 10px;
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-family: "Changa One", sans-serif;
+    font-size: 1.1rem;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: inline-block;
 }
 
-h1 {
-    color: #8b00ff;
+.nav-link:hover {
+    transform: scale(1.2);
+    letter-spacing: 0.5px;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(to right, #F796C0, #76AEF1);
+    transition: width 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.logo img {
+    height: 40px;
+    width: auto;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navbar:hover .logo img {
+    transform: scale(1.1);
+}
+
+
+/* Основной контент */
+
+.container {
+    max-width: 800px;
+    margin: 120px auto 40px;
+    padding: 0 20px;
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-footer {
-    background-color: #FBA0E3 ;
-    padding: 5px;
+.title {
+    font-size: 4rem;
+    margin-bottom: 30px;
+    background: linear-gradient(150deg, #F796C0, #76AEF1);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 4px 20px rgba(247, 150, 192, 0.3);
 }
 
-footer p {
-    background-color: white ;
-    margin: 5px;
-    border-radius: 2px;
-    padding: 2px;
-}
-
-.cont {
-    padding-left: 15px;
-}
-
-select {
-    border-radius: 10px;
-    border: solid darkblue;
-    padding: 10px;
-    color: blue;
-}
-
-select option {
-    color: gray;
+.description {
+    line-height: 1.8;
+    font-size: 1.2rem;
+    margin-bottom: 40px;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    max-width: 700px;
+}
+
+.button-container {
+    margin-top: 40px;
+}
+
+
+/* Стили кнопки */
+
+.glow-btn {
+    width: 160px;
+    height: 50px;
+    position: relative;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    overflow: hidden;
+    outline: none;
+    isolation: isolate;
+    transition: transform 0.3s ease;
+}
+
+.glow-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(247, 150, 192, 0.9) 0%, rgba(118, 174, 241, 0.9) 100%);
+    border-radius: 8px;
+    z-index: -2;
+    transition: opacity 0.3s ease;
+}
+
+.glow-btn::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(45deg, rgba(55, 128, 237) 0%, rgba(55, 128, 237) 30%, rgba(97, 75, 166) 70%, rgb(97, 75, 166) 100%);
+    border-radius: 9px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.btn-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 16px;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.glow-effect {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+}
+
+.glow-btn:hover::after {
+    opacity: 1;
+}
+
+.glow-btn:hover .glow-effect {
+    opacity: 0.6;
+}
+
+.glow-btn:hover::before {
+    opacity: 0.7;
+}
+
+.glow-btn:hover .btn-text {
+    color: #ffffff;
+}
+
+
+/* Стили для секции рисования */
+
+.drawing-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 20px;
+    margin-top: 100px;
+}
+
+.field-conteiner {
+    width: 100%;
+    max-width: 1200px;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 30px;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.field {
+    width: 60vw;
+    max-width: 800px;
+    height: 30vw;
+    max-height: 400px;
+    display: grid;
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    gap: 1px;
+    border: 3px solid #3780ED;
+    border-radius: 10px;
+    overflow: hidden;
+    background: rgb(214, 255, 148);
+}
+
+.cell {
+    background-color: rgb(214, 255, 148);
+    transition: background-color 0.3s ease;
+}
+
+
+/* Стили для палитры цветов */
+
+.color-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.color-cell,
+.tool-cell {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+.color-cell:hover,
+.tool-cell:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.color-cell.selected,
+.tool-cell.selected {
+    border: 3px solid #3780ED;
+    box-shadow: 0 0 20px rgba(55, 128, 237, 0.5);
+}
+
+.red {
+    background-color: rgb(255, 0, 0);
+}
+
+.green {
+    background-color: rgb(0, 128, 0);
+}
+
+.blue {
+    background-color: rgb(0, 0, 255);
+}
+
+.yellow {
+    background-color: rgb(255, 255, 0);
+}
+
+.skyblue {
+    background-color: rgb(135, 206, 235);
+}
+
+.eraser {
+    background: linear-gradient(135deg, #333, #555);
+}
+
+.fill-tool {
+    background: linear-gradient(135deg, #555, #777);
+}
+
+.tool-cell img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
+}
+
+
+/* Стили для горячих клавиш */
+
+.hotkey-label {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(55, 128, 237, 0.9);
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Стили для кнопки сохранения */
+
+.save-tool {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.save-tool:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+}
+
+.save-tool.selected {
+    border: 3px solid #3780ED;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+}
+
+.save-tool img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
+}
+
+
+/* Стили для кнопки скачивания */
+
+.download-Bnt {
+    background: linear-gradient(45deg, #3780ED, #614BA6);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-family: 'Changa One', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 15px rgba(55, 128, 237, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-Bnt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(55, 128, 237, 0.4);
+    background: linear-gradient(45deg, #614BA6, #3780ED);
+}
+
+.download-Bnt:active {
+    transform: translateY(-1px);
+}
+
+.download-Bnt::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.download-Bnt:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+
+/* Уведомление о сохранении */
+
+.save-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.save-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.save-notification img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+
+/* Стили для кнопки скачивания */
+
+.download-Bnt {
+    background: linear-gradient(45deg, #3780ED, #614BA6);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 25px;
+    font-family: 'Changa One', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 5px 15px rgba(55, 128, 237, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-Bnt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(55, 128, 237, 0.4);
+    background: linear-gradient(45deg, #614BA6, #3780ED);
+}
+
+.download-Bnt:active {
+    transform: translateY(-1px);
+}
+
+.download-Bnt::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.download-Bnt:active::before {
+    width: 300px;
+    height: 300px;
+}
+
+
+/* Уведомление о сохранении */
+
+.save-notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+.save-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.save-notification svg {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Контейнер для кнопки */
+
+.download-button-container {
+    text-align: center;
+    margin-top: 30px;
+    width: 100%;
+}
+
+
+/* Стили для инструментов в палитре */
+
+.save-tool {
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid transparent;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    margin-top: 15px;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.save-tool:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, #45a049, #4CAF50);
+}
+
+.save-tool.selected {
+    border: 3px solid #3780ED;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.6);
+}
+
+.save-tool svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+}
+
+.eraser {
+    background: linear-gradient(135deg, #333, #555);
+}
+
+.fill-tool {
+    background: linear-gradient(135deg, #555, #777);
+}
+
+.eraser:hover,
+.fill-tool:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.eraser.selected,
+.fill-tool.selected {
+    border: 3px solid #3780ED;
+    box-shadow: 0 0 20px rgba(55, 128, 237, 0.5);
+}
+
+
+/* Стили для горячих клавиш */
+
+.hotkey-label {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: rgba(55, 128, 237, 0.9);
+    color: white;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: monospace;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
